@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbqas85avk7dv"]
+
+[ext_resource type="Shape2D" uid="uid://70cyh31sbqfg" path="res://Assets/Tower_Model.tres" id="1_mcdu6"]
+
+[node name="Tower" type="Area2D"]
+position = Vector2(240, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("1_mcdu6")

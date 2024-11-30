@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://esd3m7hxfmb3"]
+
+[ext_resource type="PackedScene" uid="uid://bbqas85avk7dv" path="res://Scenes/Tower.tscn" id="1_ejte1"]
+
+[node name="Main" type="Node"]
+
+[node name="Tower" parent="." instance=ExtResource("1_ejte1")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.546222, 0.556036, 3.85046e-07, 0.192157)

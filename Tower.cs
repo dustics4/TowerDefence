@@ -7,7 +7,7 @@ public partial class Tower : Node
 	public override void _Ready()
 	{
 		GD.Print("Hello");
-
+		GD.Print("World");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://modules/Tower.cs" id="1_a362u"]
 
 [node name="Node2D" type="Node2D"]
+rotation = -313.377
 script = ExtResource("1_a362u")

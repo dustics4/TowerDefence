@@ -45,6 +45,9 @@ public partial class Tower : Node2D
 	}
 	
 	private Font _defaultFont = ThemeDB.FallbackFont;
+
+	private float _maxWidth = 7f;
+	private float _time = 0f;
     public override void _Draw()
     {
 		Color grey = new Color("414042");
@@ -63,7 +66,8 @@ public partial class Tower : Node2D
 
 		//Draw a string, GODOT text below the logo with the default font size 22
 		DrawString(_defaultFont, new Godot.Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center,90,22 );
-
+		DrawPolyline(_mouth, white , _mouthWidth);
+		DrawSetTransform(new Godot.Vector2(-60f, -60f));
     }
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
@@ -77,8 +81,9 @@ public partial class Tower : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		_time += (float)delta;
+		_mouthWidth = MathF.Abs(MathF.Sin(_time) * _maxWidth);
 		QueueRedraw();
-		Rotation -= RotationSpeed * (float)delta;
-		DrawSetTransform(new Godot.Vector2(-60f, -60f));
+
 	}
 }

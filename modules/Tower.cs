@@ -43,10 +43,16 @@ public partial class Tower : Node2D
 
     public override void _Draw()
     {
+		Color grey = new Color("414042");
 		Color white = Colors.White;
 		Color godotBlue = new Color("478cbf");
 		DrawPolygon(_head, new Color[]{godotBlue});
 		DrawPolyline(_mouth, white, _mouthWidth);	
+
+		    DrawCircle(new Godot.Vector2(42.479f, 65.4825f), 9.3905f, white);
+			DrawCircle(new Godot.Vector2(85.524f, 65.4825f), 9.3905f, white);
+			DrawCircle(new Godot.Vector2(43.423f, 65.92f), 6.246f, grey);
+			DrawCircle(new Godot.Vector2(84.626f, 66.008f), 6.246f, grey);
     }
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.

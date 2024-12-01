@@ -18,13 +18,28 @@ public partial class Tower : Node2D
         { 33.951f, 40.940f },  { 25.637f, 36.104f },
         { 17.262f, 47.082f },  { 22.973f, 55.237f }
 	};
+
+	private Godot.Vector2[] _head;
+
+	private Godot.Vector2[] FloatArrayToVector2Array(float[,] coords)
+	{
+		int size = coords.GetUpperBound(0);
+		Godot.Vector2[] array = new Godot.Vector2[size + 1];
+		for(int i = 0; i <= size; i++){
+			array[i] = new Godot.Vector2(coords[i, 0], coords[i, 1]);
+		}
+		return array;
+	}
+
     public override void _Draw()
     {
-		
+		Color godotBlue = new Color("478cbf");
+		DrawPolygon(_head, new Color[]{godotBlue});	
     }
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
+		_head = FloatArrayToVector2Array(_coordsHead);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

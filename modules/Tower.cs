@@ -40,7 +40,8 @@ public partial class Tower : Node2D
 		}
 		return array;
 	}
-
+	
+	private Font _defaultFont = ThemeDB.FallbackFont;
     public override void _Draw()
     {
 		Color grey = new Color("414042");
@@ -49,10 +50,17 @@ public partial class Tower : Node2D
 		DrawPolygon(_head, new Color[]{godotBlue});
 		DrawPolyline(_mouth, white, _mouthWidth);	
 
-		    DrawCircle(new Godot.Vector2(42.479f, 65.4825f), 9.3905f, white);
-			DrawCircle(new Godot.Vector2(85.524f, 65.4825f), 9.3905f, white);
-			DrawCircle(new Godot.Vector2(43.423f, 65.92f), 6.246f, grey);
-			DrawCircle(new Godot.Vector2(84.626f, 66.008f), 6.246f, grey);
+		DrawCircle(new Godot.Vector2(42.479f, 65.4825f), 9.3905f, white);
+		DrawCircle(new Godot.Vector2(85.524f, 65.4825f), 9.3905f, white);
+		DrawCircle(new Godot.Vector2(43.423f, 65.92f), 6.246f, grey);
+		DrawCircle(new Godot.Vector2(84.626f, 66.008f), 6.246f, grey);
+
+		///Draw short but thick white veritcal line for the nose
+		DrawLine(new Godot.Vector2(64.273f, 60.564f), new Godot.Vector2(64.273f, 74.349f), white, 5.8f);
+
+		//Draw a string, GODOT text below the logo with the default font size 22
+		DrawString(_defaultFont, new Godot.Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center,180,22 );
+
     }
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.

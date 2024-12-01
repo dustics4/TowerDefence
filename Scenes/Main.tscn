@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://esd3m7hxfmb3"]
+[gd_scene load_steps=3 format=3 uid="uid://esd3m7hxfmb3"]
 
 [ext_resource type="PackedScene" uid="uid://bbqas85avk7dv" path="res://Scenes/Tower.tscn" id="1_ejte1"]
+[ext_resource type="Script" path="res://Tower.cs" id="2_dvp37"]
 
 [node name="Main" type="Node"]
 
 [node name="Tower" parent="." instance=ExtResource("1_ejte1")]
+script = ExtResource("2_dvp37")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

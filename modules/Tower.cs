@@ -19,8 +19,18 @@ public partial class Tower : Node2D
         { 17.262f, 47.082f },  { 22.973f, 55.237f }
 	};
 
-	private Godot.Vector2[] _head;
+	private float[,] _coordsMouth = 
+	{
+		{ 22.817f, 81.100f }, { 38.522f, 82.740f },
+    	{ 39.001f, 90.887f }, { 54.465f, 92.204f },
+    	{ 55.641f, 84.260f }, { 72.418f, 84.177f },
+    	{ 73.629f, 92.158f }, { 88.895f, 90.923f },
+    	{ 89.556f, 82.673f }, { 105.005f, 81.100f }
+	};
 
+	private Godot.Vector2[] _head;
+	private Godot.Vector2[] _mouth;
+	private float _mouthWidth = 4.4f;
 	private Godot.Vector2[] FloatArrayToVector2Array(float[,] coords)
 	{
 		int size = coords.GetUpperBound(0);
@@ -33,13 +43,16 @@ public partial class Tower : Node2D
 
     public override void _Draw()
     {
+		Color white = Colors.White;
 		Color godotBlue = new Color("478cbf");
-		DrawPolygon(_head, new Color[]{godotBlue});	
+		DrawPolygon(_head, new Color[]{godotBlue});
+		DrawPolyline(_mouth, white, _mouthWidth);	
     }
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
 		_head = FloatArrayToVector2Array(_coordsHead);
+		_mouth = FloatArrayToVector2Array(_coordsMouth);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

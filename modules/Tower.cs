@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Numerics;
 
+[Tool]
 public partial class Tower : Node2D
 {
 	private float[,] _coordsHead = 
@@ -28,6 +29,8 @@ public partial class Tower : Node2D
     	{ 89.556f, 82.673f }, { 105.005f, 81.100f }
 	};
 
+	[Export] 
+	public float RotationSpeed { get; set; } = 1.0f;  // In radians per second.
 	private Godot.Vector2[] _head;
 	private Godot.Vector2[] _mouth;
 	private float _mouthWidth = 4.4f;
@@ -59,7 +62,7 @@ public partial class Tower : Node2D
 		DrawLine(new Godot.Vector2(64.273f, 60.564f), new Godot.Vector2(64.273f, 74.349f), white, 5.8f);
 
 		//Draw a string, GODOT text below the logo with the default font size 22
-		DrawString(_defaultFont, new Godot.Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center,180,22 );
+		DrawString(_defaultFont, new Godot.Vector2(20f, 130f), "GODOT", HorizontalAlignment.Center,90,22 );
 
     }
 	
@@ -67,11 +70,15 @@ public partial class Tower : Node2D
 	{
 		_head = FloatArrayToVector2Array(_coordsHead);
 		_mouth = FloatArrayToVector2Array(_coordsMouth);
+		Rotation = 0;
+		Position = new Godot.Vector2(60,60);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		QueueRedraw();
+		Rotation -= RotationSpeed * (float)delta;
+		DrawSetTransform(new Godot.Vector2(-60f, -60f));
 	}
 }

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Reflection.Metadata;
 
 [Tool]
-public partial class Tower : Node2D
+public partial class Tower : Area2D
 {
 
-	
+		
     public override void _Draw()
     {
 

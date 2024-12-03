@@ -7,12 +7,4 @@
 
 [node name="Tower" parent="." instance=ExtResource("1_ejte1")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.546222, 0.556036, 3.85046e-07, 0.192157)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_q6u7g")]

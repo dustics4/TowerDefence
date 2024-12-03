@@ -1,15 +1,32 @@
 using Godot;
 using System;
 
-public partial class Test : CharacterBody2D
+public partial class Test : RigidBody2D
 {	
+	[Signal]
+	public delegate void HitEventHandler();
+
     [Export]
 	public int Speed {get; set;} = 200;
 	public Vector2 ScreenSize;
 
 
 	// Called when the node enters the scene tree for the first time.
-	
+    
+    private void OnBodyEntered(Node2D body)
+	{
+		Hide();
+		EmitSignal(SignalName.Hit);
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled , true);
+	}
+
+	public void Start(Vector2 position)
+	{
+		Position = position;
+		Show();
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	}
+
 	public void GetInput()
 	{
 		Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");

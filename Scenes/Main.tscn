@@ -15,4 +15,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.546222, 0.556036, 3.85046e-07, 0.192157)
 
-[node name="Area2D" parent="." instance=ExtResource("2_q6u7g")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_q6u7g")]
+collision_layer = 4

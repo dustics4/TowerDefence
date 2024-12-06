@@ -27,17 +27,6 @@ public partial class Test : RigidBody2D
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
-	public void GetInput()
-	{
-		Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
-		Velocity = inputDirection * Speed;
-	}
-
-    public override void _PhysicsProcess(double delta)
-    {
-        GetInput();
-		MoveAndSlide();
-    }
     public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;

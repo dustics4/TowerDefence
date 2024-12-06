@@ -5,6 +5,8 @@
 
 [node name="Main" type="Node"]
 
-[node name="Tower" parent="." instance=ExtResource("1_ejte1")]
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_q6u7g")]
+position = Vector2(20, 40)
+
+[node name="Tower" parent="." instance=ExtResource("1_ejte1")]
+position = Vector2(240, 320)

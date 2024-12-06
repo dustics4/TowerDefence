@@ -77,6 +77,11 @@ public partial class Test : CharacterBody2D
         velocity.Y -= 1;
     }
 
+	if (Input.IsActionPressed("reset"))
+    {
+       GD.Print("Reset");
+    }
+
     if (velocity.Length() > 0)
     {
         velocity = velocity.Normalized() * Speed;

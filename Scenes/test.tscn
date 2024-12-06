@@ -10,8 +10,6 @@ script = ExtResource("1_cj8no")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jhbp3")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CollisionShape2D"]
-
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
 offset_left = -9.0
 offset_top = -9.0

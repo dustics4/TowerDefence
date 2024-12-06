@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcjkb0g86div"]
+[gd_scene load_steps=3 format=3 uid="uid://bcjkb0g86div"]
+
+[ext_resource type="Script" path="res://modules/Test.cs" id="1_cj8no"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhbp3"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_cj8no")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jhbp3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CollisionShape2D"]
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
 offset_left = -9.0

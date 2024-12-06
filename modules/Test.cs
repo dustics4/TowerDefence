@@ -5,6 +5,7 @@ public partial class Test : CharacterBody2D
 {	
 	[Signal]
 	public delegate void HitEventHandler();
+	
 
     [Export]
 	public int Speed {get; set;} = 200;
@@ -17,30 +18,42 @@ public partial class Test : CharacterBody2D
     
     private void OnBodyEntered(Node2D body)
 	{
-		Hide();
-		EmitSignal(SignalName.Hit);
-		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled , true);
+		if(body == this){
+			Hide();
+			EmitSignal(SignalName.Hit);
+			GD.Print("Test collided with tower");
+		}		
 	}
 
-	public void Start(Vector2 position)
-	{
-		Position = position;
-		Show();
-		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
-	}
 
     public override void _Ready()
 	{
 		_screenSize = GetViewportRect().Size;
 
 		_tower = GetParent().GetNode<Area2D>("Tower");
-		if(_tower == null){
+		if (_tower == null)
+        {
+            GD.PrintErr("Tower node not found!");
+        }
+		if(_tower != null){
 			_tower.BodyEntered += OnBodyEntered;
-		}
+		} 
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
+    {
+        if(_tower == null){
+			return;
+		}
+
+		_targetPosition = _tower.GlobalPosition;
+		Velocity = (_targetPosition - GlobalPosition).Normalized() * Speed;
+
+		MoveAndSlide();
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		var velocity = Vector2.Zero; // The player's movement vector.
 
@@ -70,8 +83,8 @@ public partial class Test : CharacterBody2D
     }
 	Position += velocity * (float)delta;
 	Position = new Vector2(
-		x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
-		y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
+		x: Mathf.Clamp(Position.X, 0, _screenSize.X),
+		y: Mathf.Clamp(Position.Y, 0, _screenSize.Y)
 	);
 	}
 }

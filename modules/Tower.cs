@@ -9,7 +9,7 @@ public partial class Tower : Area2D
 	[Signal]
 	public delegate void HitEventHandler();
 
-
+	
 	int health = 100;
 
 	private void OnBodyEntered(Node2D body)

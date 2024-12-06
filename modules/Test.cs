@@ -8,8 +8,10 @@ public partial class Test : CharacterBody2D
 
     [Export]
 	public int Speed {get; set;} = 200;
-	public Vector2 ScreenSize;
+	public Vector2 _targetPosition;
+	public Vector2 _screenSize;
 
+	public Area2D _tower;	
 
 	// Called when the node enters the scene tree for the first time.
     
@@ -29,7 +31,12 @@ public partial class Test : CharacterBody2D
 
     public override void _Ready()
 	{
-		ScreenSize = GetViewportRect().Size;
+		_screenSize = GetViewportRect().Size;
+
+		_tower = GetParent().GetNode<Area2D>("Tower");
+		if(_tower == null){
+			_tower.BodyEntered += OnBodyEntered;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

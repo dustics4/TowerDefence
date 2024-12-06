@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Test : RigidBody2D
+public partial class Test : CharacterBody2D
 {	
 	[Signal]
 	public delegate void HitEventHandler();

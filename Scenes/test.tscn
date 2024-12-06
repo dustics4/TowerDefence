@@ -1,20 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcjkb0g86div"]
+[gd_scene load_steps=2 format=3 uid="uid://bcjkb0g86div"]
 
-[ext_resource type="Script" path="res://modules/Test.cs" id="1_cj8no"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhbp3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_reta2"]
-size = Vector2(22, 23)
-
-[node name="RigidBody2D" type="RigidBody2D"]
-gravity_scale = 0.0
-script = ExtResource("1_cj8no")
+[node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1.5)
-shape = SubResource("RectangleShape2D_reta2")
+shape = SubResource("RectangleShape2D_jhbp3")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
-offset_left = -10.0
-offset_top = -11.0
-offset_right = 10.0
-offset_bottom = 11.0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0

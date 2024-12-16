@@ -13,3 +13,9 @@ grow_vertical = 2
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_right = 226.0
 offset_bottom = 41.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 380.0
+offset_right = 468.0
+offset_bottom = 23.0
+text = "Health: 100"

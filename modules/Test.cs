@@ -9,6 +9,8 @@ public partial class Test : CharacterBody2D
 
     [Export]
 	public int Speed {get; set;} = 200;
+	
+	public Vector2 _initialPosition;
 	public Vector2 _targetPosition;
 	public Vector2 _screenSize;
 
@@ -79,14 +81,18 @@ public partial class Test : CharacterBody2D
 
 	if (Input.IsActionPressed("reset"))
     {
-       GD.Print("Reset");
+    	GD.Print("Resetting Test object position");
+		GlobalPosition = _initialPosition;
+		Velocity = Vector2.Zero;
     }
+
 
     if (velocity.Length() > 0)
     {
         velocity = velocity.Normalized() * Speed;
     }
 	Position += velocity * (float)delta;
+	
 	Position = new Vector2(
 		x: Mathf.Clamp(Position.X, 0, _screenSize.X),
 		y: Mathf.Clamp(Position.Y, 0, _screenSize.Y)

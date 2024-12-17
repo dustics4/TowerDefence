@@ -14,23 +14,15 @@ public partial class Test : CharacterBody2D
 	public Vector2 _targetPosition;
 	public Vector2 _screenSize;
 	[Export]
-	public Label _healthLabel;
+	public Control _healthLabel;
 
 	public Area2D _tower;
 
 	// Called when the node enters the scene tree for the first time.
 	
-	private int _health = 100;
 	private void OnBodyEntered(Node2D body)
 	{
 		if(body == this){
-			_health -= 10;
-			if(_healthLabel != null){
-				_healthLabel.Text = $"Health : {_health}";
-				
-			}else{
-				GD.Print($"Health : {_health}");
-			}
 			Hide();
 			EmitSignal(SignalName.Hit);
 			GD.Print("Test collided with tower");

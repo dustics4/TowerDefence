@@ -36,6 +36,7 @@ public partial class Tower : Area2D
 	{
 		if(healthLabel != null){
 			GD.Print(healthLabel);
+			GD.Print(health);
 			healthLabel.Text = $"Health : {health}";
 		} else
         {
@@ -45,13 +46,15 @@ public partial class Tower : Area2D
 
 	private void ReduceHealth(int amount)
 	{
-		health -= amount;
+		health = health - amount;
+		GD.Print("reduce health function ran" + health);
 		UpdateHealthLabel();
 		GD.Print($"Tower health reduced to {health}");
 	}
 
 	private void OnBodyEntered(Node2D body)
 	{
+		GD.Print("Entered body");
 		ReduceHealth(10);
 		HandleCollisionEffects();
 	}

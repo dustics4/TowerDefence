@@ -15,19 +15,41 @@ public partial class Tower : Area2D
 
 	private void InitializeHealthLabel()
 	{
-
+		var uiNode = GetParent().GetNode<Control>("UI");
+		if(uiNode != null)
+		{
+			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
+			if(healthLabel == null) 
+			{
+				GD.Print("Health label not found under  UI/CanvasLayer/Label.");
+			}
+		}else
+		{
+			GD.PrintErr("UI node not found");
+		}
 	}
 
 	private void UpdateHealthLabel()
 	{
+		if(healthLabel != null){
+			healthLabel.Text = $"Health : {health}";
+		} else
+        {
+            GD.Print($"Health : {health} (Health label not found)");
+        }
+	}
 
+	private void ReduceHealth(int amount)
+	{
+		health -= amount;
+		UpdateHealthLabel();
+		GD.Print($"Tower health reduced to {health}");
 	}
 
 	private void OnBodyEntered(Node2D body)
 	{
-		Hide();
-		EmitSignal(SignalName.Hit);
-		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled , true);
+		ReduceHealth(10);
+		HandleCollisionEffects();
 	}
 
 	public void Start(Vector2 position)
@@ -40,6 +62,16 @@ public partial class Tower : Area2D
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
 		GD.Print("Tower with health  :" + health);
+
+		InitializeHealthLabel();
+		UpdateHealthLabel();
+	}
+
+	private void HandleCollisionEffects()
+	{
+		Hide();
+		EmitSignal(SignalName.Hit);
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled , true);
 	}
 
 	private void EnableCollision()
@@ -51,7 +83,6 @@ public partial class Tower : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 		QueueRedraw();
 	}
 }

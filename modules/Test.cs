@@ -83,7 +83,6 @@ public partial class Test : CharacterBody2D
 
 		if (Input.IsActionPressed("reset"))
 		{
-			GD.Print("Resetting Test object position");
 			GlobalPosition = new Vector2(10,20);
 			Velocity = Vector2.Zero;
 		}

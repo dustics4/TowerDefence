@@ -13,3 +13,5 @@ position = Vector2(20, 40)
 position = Vector2(240, 320)
 
 [node name="Control" parent="." instance=ExtResource("3_mhe7j")]
+
+[connection signal="body_entered" from="Tower" to="CharacterBody2D" method="_on_tower_body_entered"]

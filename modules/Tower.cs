@@ -8,7 +8,9 @@ public partial class Tower : Area2D
 {
 	[Signal]
 	public delegate void HitEventHandler();
-
+	 
+	[Export]
+	public CharacterBody2D test;
 	
 	private int health = 100;
 	private Label healthLabel;
@@ -54,21 +56,31 @@ public partial class Tower : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("Entered body");
+		GD.Print($"Body entered: {body.Name}");
+		GD.Print("body");
 		ReduceHealth(10);
-		HandleCollisionEffects();
 	}
 
 	public void Start(Vector2 position)
 	{
 		Position = position;
 		Show();
-		EnableCollision();
 	}
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
+		var testObject = GetParent().GetNode<CharacterBody2D>("CharacterBody2D");
+		GD.Print("Printing test object" + testObject);
+
+		BodyEntered += OnBodyEntered;
+		
+
+
+		EnableCollision();
+
 		GD.Print("Tower with health  :" + health);
+		GD.Print($"Monitoring: {Monitoring}, CollisionMask: {CollisionMask}");
+		
 
 		InitializeHealthLabel();
 		UpdateHealthLabel();

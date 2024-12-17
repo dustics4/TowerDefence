@@ -15,24 +15,27 @@ public partial class Tower : Area2D
 
 	private void InitializeHealthLabel()
 	{
-		var uiNode = GetParent().GetNode<Control>("UI");
+		var uiNode = GetParent().GetNode<Control>("Control");
 		if(uiNode != null)
 		{
-			GD.Print("UI node found.");
+			GD.Print(uiNode);
 			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
 			if(healthLabel == null) 
-			{
-				GD.Print("Health label not found under  UI/CanvasLayer/Label.");
+			{	
+				GD.Print(healthLabel);
+				GD.Print("Health label not found under  CanvasLayer/Label.");
 			}
 		}else
 		{
 			GD.PrintErr("UI node not found");
+			GD.Print(uiNode);
 		}
 	}
 
 	private void UpdateHealthLabel()
 	{
 		if(healthLabel != null){
+			GD.Print(healthLabel);
 			healthLabel.Text = $"Health : {health}";
 		} else
         {

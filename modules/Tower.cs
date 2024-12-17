@@ -18,6 +18,7 @@ public partial class Tower : Area2D
 		var uiNode = GetParent().GetNode<Control>("UI");
 		if(uiNode != null)
 		{
+			GD.Print("UI node found.");
 			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
 			if(healthLabel == null) 
 			{

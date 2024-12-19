@@ -58,7 +58,7 @@ public partial class Tower : Area2D
 		GD.Print($"Tower health reduced to {health}");
 	}
 
-	public void checkHealth()
+	public void GameCheckRound()
 	{
 		if(health == 0)
 		{
@@ -86,7 +86,7 @@ public partial class Tower : Area2D
 
 		InitializeHealthLabel();
 		UpdateHealthLabel();
-		checkHealth();
+		GameCheckRound();
 	}
 
 	private void HandleCollisionEffects()

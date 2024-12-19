@@ -15,6 +15,5 @@ public partial class DamageZone : Area2D
 
 	public void _on_body_entered(Node body)
 	{
-		GD.Print("Entered body" + body.Name);
 	}
 }

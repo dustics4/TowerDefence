@@ -15,6 +15,12 @@ public partial class Tower : Area2D
 	private int health = 100;
 	private Label healthLabel;
 
+	public void _on_body_entered(Node2D body)
+	{
+		GD.Print($"Body entered: {body.Name}");
+		GD.Print("body");
+		ReduceHealth(10);
+	}
 	private void InitializeHealthLabel()
 	{
 		var uiNode = GetParent().GetNode<Control>("Control");
@@ -37,8 +43,6 @@ public partial class Tower : Area2D
 	private void UpdateHealthLabel()
 	{
 		if(healthLabel != null){
-			GD.Print(healthLabel);
-			GD.Print(health);
 			healthLabel.Text = $"Health : {health}";
 		} else
         {
@@ -54,12 +58,14 @@ public partial class Tower : Area2D
 		GD.Print($"Tower health reduced to {health}");
 	}
 
-	private void OnBodyEntered(Node2D body)
+	public void checkHealth()
 	{
-		GD.Print($"Body entered: {body.Name}");
-		GD.Print("body");
-		ReduceHealth(10);
+		if(health == 0)
+		{
+			GD.Print("Game over!");
+		}
 	}
+	
 
 	public void Start(Vector2 position)
 	{
@@ -72,10 +78,6 @@ public partial class Tower : Area2D
 		var testObject = GetParent().GetNode<CharacterBody2D>("CharacterBody2D");
 		GD.Print("Printing test object" + testObject);
 
-		BodyEntered += OnBodyEntered;
-		
-
-
 		EnableCollision();
 
 		GD.Print("Tower with health  :" + health);
@@ -84,6 +86,7 @@ public partial class Tower : Area2D
 
 		InitializeHealthLabel();
 		UpdateHealthLabel();
+		checkHealth();
 	}
 
 	private void HandleCollisionEffects()

@@ -85,6 +85,7 @@ public partial class Test : CharacterBody2D
 		{
 			GlobalPosition = new Vector2(10,20);
 			Velocity = Vector2.Zero;
+			Show();
 		}
 
 

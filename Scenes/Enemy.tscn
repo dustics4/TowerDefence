@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://d3g8exs0j2b5r"]
+[gd_scene load_steps=3 format=3 uid="uid://d3g8exs0j2b5r"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://modules/Enemy.cs" id="1_sidhe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mu0m"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_sidhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7mu0m")

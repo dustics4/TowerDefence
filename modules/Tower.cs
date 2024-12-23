@@ -14,6 +14,7 @@ public partial class Tower : Area2D
 	
 	private int health = 100;
 	private Label healthLabel;
+	public bool gameOver;
 
 	public void _on_body_entered(Node2D body)
 	{
@@ -58,7 +59,8 @@ public partial class Tower : Area2D
 		GD.Print($"Tower health reduced to {health}");
 		if(health == 0)
 		{
-			GD.Print("Game Over");
+			gameOver = true;
+			GD.Print("Game Over : " , gameOver);
 		}
 	}
 

@@ -5,21 +5,22 @@ public partial class Enemy : RigidBody2D
 {
 	public int CurrentHealth;
 	public int MaxHealth;
-	public enum EnemyType 
-	{
-		enemy1,
-		enemy2,
-		enemy3
-		
-	};
 
-	private EnemyType enemyType;
+	public float Damage;
 
-	public Enemy(EnemyType _enemyType, int _maxHealth)
+
+	public Enemy(int _maxHealth)
 	{
-		enemyType = _enemyType;
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth;
+		Damage = 10;
+	}
+
+	public Enemy(int _maxHealth, float _damage)
+	{
+		MaxHealth = _maxHealth;
+		CurrentHealth = MaxHealth;
+		_damage = Damage;
 	}
 
 	public void PrintEnemyHealth()

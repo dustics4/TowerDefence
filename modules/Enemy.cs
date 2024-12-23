@@ -5,22 +5,21 @@ public partial class Enemy : RigidBody2D
 {
 	public int CurrentHealth;
 	public int MaxHealth;
-
-	public float Damage;
+	public float Damage = 0f;
 
 
 	public Enemy(int _maxHealth)
 	{
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth;
-		Damage = 10;
+		Damage = 10f;
 	}
 
 	public Enemy(int _maxHealth, float _damage)
 	{
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth;
-		_damage = Damage;
+		Damage = _damage;
 	}
 
 	public void PrintEnemyHealth()

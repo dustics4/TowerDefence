@@ -3,9 +3,9 @@ using System;
 
 public partial class Enemy : RigidBody2D
 {
-	public int _CurrentHealth;
-	public int _MaxHealth;
-	public enum _EnemyType 
+	public int CurrentHealth;
+	public int MaxHealth;
+	public enum EnemyType 
 	{
 		enemy1,
 		enemy2,
@@ -13,11 +13,25 @@ public partial class Enemy : RigidBody2D
 		
 	};
 
+	private EnemyType enemyType;
+
+	public Enemy(EnemyType _enemyType, int _maxHealth)
+	{
+		enemyType = _enemyType;
+		MaxHealth = _maxHealth;
+		CurrentHealth = MaxHealth;
+	}
+
+	public void PrintEnemyHealth()
+	{	
+		GD.Print($"Current health : {0} ", CurrentHealth);
+	}
+	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_EnemyType enemyType = new _EnemyType{};
-
+		PrintEnemyHealth();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

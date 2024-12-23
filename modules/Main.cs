@@ -4,7 +4,6 @@ using System;
 public partial class Main : Node
 {	
 	private EnemySpawner _enemySpawner = new EnemySpawner();
-	private Tower tower = new Tower();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

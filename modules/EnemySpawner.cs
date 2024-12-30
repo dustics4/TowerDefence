@@ -22,4 +22,9 @@ public class EnemySpawner
         Enemies.Add(enemy2);
         GD.Print($"enemy1 Damage : {0}, enemy2 Damage: {1}", enemy.Damage.ToString(), enemy2.Damage.ToString());
     }
+
+    public void SpawnEnemy(Enemy _enemy, Vector2 _position)
+    {
+        
+    }
 }

@@ -6,7 +6,7 @@ public partial class Enemy : RigidBody2D
 	public int CurrentHealth;
 	public int MaxHealth;
 	public float Damage = 0f;
-
+	
 
 	public Enemy(int _maxHealth)
 	{
@@ -18,15 +18,16 @@ public partial class Enemy : RigidBody2D
 	public Enemy(int _maxHealth, float _damage)
 	{
 		MaxHealth = _maxHealth;
-		CurrentHealth = MaxHealth;
+		CurrentHealth = MaxHealth; 
 		Damage = _damage;
+
+		
 	}
 
 	public void PrintEnemyHealth()
 	{	
 		GD.Print($"Current health : {0} ", CurrentHealth);
 	}
-	
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

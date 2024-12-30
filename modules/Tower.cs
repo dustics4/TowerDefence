@@ -61,6 +61,7 @@ public partial class Tower : Area2D
 		{
 			gameOver = true;
 			GD.Print("Game Over : " , gameOver);
+			health = 0;
 		}
 	}
 

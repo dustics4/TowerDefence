@@ -23,3 +23,5 @@ position = Vector2(240, 320)
 [node name="RigidBody2D" parent="." instance=ExtResource("6_mkfqb")]
 position = Vector2(200, 200)
 gravity_scale = 0.0
+
+[node name="Enemy" parent="." instance=ExtResource("6_mkfqb")]

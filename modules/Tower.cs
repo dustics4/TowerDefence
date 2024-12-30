@@ -58,10 +58,11 @@ public partial class Tower : Area2D
 		UpdateHealthLabel();
 		GD.Print($"Tower health reduced to {health}");
 		if(health == 0)
-		{
+		{	
+			health = 0;
 			gameOver = true;
 			GD.Print("Game Over : " , gameOver);
-			health = 0;
+			
 		}
 	}
 

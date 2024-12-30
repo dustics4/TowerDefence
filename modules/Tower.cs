@@ -79,8 +79,6 @@ public partial class Tower : Area2D
 		EnableCollision();
 
 		GD.Print("Tower with health  :" + health);
-		GD.Print($"Monitoring: {Monitoring}, CollisionMask: {CollisionMask}");
-		
 
 		InitializeHealthLabel();
 		UpdateHealthLabel();

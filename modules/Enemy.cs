@@ -6,7 +6,6 @@ public partial class Enemy : RigidBody2D
 	public int CurrentHealth;
 	public int MaxHealth;
 	public float Damage = 0f;
-	
 	public RigidBody2D Body;
 
 	public Enemy(int _maxHealth)
@@ -14,8 +13,7 @@ public partial class Enemy : RigidBody2D
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth;
 		Damage = 10f;
-		Body = this.GetNode<RigidBody2D>("Enemy");  
-		GD.Print("RB Test" + Body);
+		Body = GetNode<RigidBody2D>(".");  
 	}
 
 	public Enemy(int _maxHealth, float _damage)

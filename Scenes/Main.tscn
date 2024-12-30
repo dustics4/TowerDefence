@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://esd3m7hxfmb3"]
+[gd_scene load_steps=8 format=3 uid="uid://esd3m7hxfmb3"]
 
 [ext_resource type="Script" path="res://modules/Main.cs" id="1_5eo4c"]
 [ext_resource type="PackedScene" uid="uid://bbqas85avk7dv" path="res://Scenes/Tower.tscn" id="1_ejte1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bn7t1jhr0ejac" path="res://Scenes/UI.tscn" id="3_mhe7j"]
 [ext_resource type="PackedScene" uid="uid://b14vwj6sxe6jy" path="res://Scenes/damage_zone.tscn" id="4_lp1mc"]
 [ext_resource type="PackedScene" uid="uid://d3g8exs0j2b5r" path="res://Scenes/Enemy.tscn" id="6_mkfqb"]
+[ext_resource type="PackedScene" uid="uid://cc7avnv1283d5" path="res://Scenes/enemy_spawner.tscn" id="7_t8266"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5eo4c")
@@ -21,7 +22,9 @@ position = Vector2(240, 320)
 [node name="DamageZone" parent="." instance=ExtResource("4_lp1mc")]
 
 [node name="RigidBody2D" parent="." instance=ExtResource("6_mkfqb")]
+visible = false
 position = Vector2(200, 200)
-gravity_scale = 0.0
 
 [node name="Enemy" parent="." instance=ExtResource("6_mkfqb")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_t8266")]

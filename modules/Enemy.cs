@@ -21,8 +21,7 @@ public partial class Enemy : RigidBody2D
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth; 
 		Damage = _damage;
-
-		
+		Body = GetNode<RigidBody2D>(".");
 	}
 
 	public void PrintEnemyHealth()

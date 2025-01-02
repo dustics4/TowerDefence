@@ -11,8 +11,6 @@ public partial class Main : Node
 
 	public override void _Ready()
 	{
-		_enemySpawner.SpawnEnemy();
-		
 		//_enemySpawner.SpawnEnemy(_enemy, pos);
 	}
 

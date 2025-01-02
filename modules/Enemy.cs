@@ -48,6 +48,5 @@ public partial class Enemy : RigidBody2D
 	public override void _Process(double delta)
 	{
 		
-		SpawnPosition(new Vector2(100,100));
 	}
 }

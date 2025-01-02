@@ -30,8 +30,9 @@ public partial class EnemySpawner : Node
 
     public void SpawnEnemy(Enemy _enemy, Vector2 _position)
     {
-        AddChild(_enemy);
+        
         _enemy.Body.Position = _position;
+        AddChild(_enemy);
 
     }
 }

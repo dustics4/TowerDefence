@@ -44,9 +44,7 @@ public partial class EnemySpawner : Node
             spawnPoint = new();
             spawnPoint.Name = name + i;
             AddChild(spawnPoint);
-            
+            spawns.Add(spawnPoint);
         }
     }
-
-
 }

@@ -11,8 +11,7 @@ public partial class Main : Node
 
 	public override void _Ready()
 	{
-		int health = 100;
-		_enemySpawner.CreateEnemy(health);
+		_enemySpawner.SpawnEnemy();
 		
 		//_enemySpawner.SpawnEnemy(_enemy, pos);
 	}

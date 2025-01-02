@@ -11,7 +11,7 @@ public partial class EnemySpawner : Node
     // movement enemy
     // what happens when enemy hits tower.
 
-
+    private PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
     public EnemySpawner()
     {
         
@@ -19,35 +19,24 @@ public partial class EnemySpawner : Node
 
     public void CreateEnemy(int _maxHealth)
     {   
-        int amount = 1; //Creating amount of enemies
-        int secondAmount = 2;
-        
         Vector2 pos = new Vector2(200, 200f); //Setting possition for enemy
         Vector2 pos2 = new Vector2(300, 200f);
         
-        Enemy enemy = new Enemy(_maxHealth); //ICreating instance of enemy
-        Enemy enemy2 = new Enemy(_maxHealth , 100f);
-        
-
-        Enemies.Add(enemy); // Adding enemy to the list
-        Enemies.Add(enemy2);
-        
-        GD.Print($"enemy1 Damage : {0}, enemy2 Damage: {1}", enemy.Damage.ToString(), enemy2.Damage.ToString());
-        GD.Print($"Enemy1 at position {0} ||  enemy2 at position {1}", enemy.Position, enemy2.Position);
-
-        SpawnEnemy(enemy, pos, amount); // Spawning enemy1 and 2 below
-        SpawnEnemy(enemy2 , pos2, secondAmount);
     }
 
-    public void SpawnEnemy(Enemy _enemy, Vector2 _position, int _amount)
+    public void SpawnEnemy()
     {
-
-        string path = "res://Scenes/Enemy.tscn";
-        GD.Print(path);
-        for(int i = 0; i < _amount; i++)
-        {
-            _enemy.GlobalPosition = _position;
-        }
-       
+        Enemy enemy = enemyScene.Instantiate() as Enemy;
+        enemy.Name = "Enemy" + Enemies.Count;
+        Enemies.Add(enemy);
+        AddChild(enemy);
+        enemy.Init(100, 10f);
     }
+
+    public void CreateSpawnPoints()
+    {
+        
+    }
+
+
 }

@@ -11,7 +11,7 @@ public partial class Main : Node
 	public override void _Ready()
 	{
 		_enemySpawner.CreateEnemy(100);
-		_enemySpawner.SpawnEnemy(_enemy, pos)
+		_enemySpawner.SpawnEnemy(_enemy, pos);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -52,7 +52,6 @@ public partial class Test : CharacterBody2D
 
 		_targetPosition = _tower.GlobalPosition;
 		Velocity = (_targetPosition - GlobalPosition).Normalized() * Speed;
-
 		MoveAndSlide();
 	}
 

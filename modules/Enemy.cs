@@ -31,7 +31,8 @@ public partial class Enemy : RigidBody2D
 
 	public void Movement()
 	{
-		
+		//reference tower position.  _tower = GetParent().GetNode<Area2D>("Tower");
+		// We need to enemy after spawning to move from coodrinates to tower global position.
 	}
 
 	// Called when the node enters the scene tree for the first time.

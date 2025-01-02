@@ -9,6 +9,9 @@ public partial class EnemySpawner : Node
     // colide with other enemies
     // movement enemy
     // what happens when enemy hits tower.
+
+    private RigidBody2D rigidBodyEnemy;
+
     public EnemySpawner()
     {
         
@@ -30,9 +33,7 @@ public partial class EnemySpawner : Node
 
     public void SpawnEnemy(Enemy _enemy, Vector2 _position)
     {
-        
-        _enemy.Body.Position = _position;
-        AddChild(_enemy);
-
+        rigidBodyEnemy = _enemy.Body;
+       
     }
 }

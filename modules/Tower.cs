@@ -27,7 +27,6 @@ public partial class Tower : Area2D
 		var uiNode = GetParent().GetNode<Control>("Control");
 		if(uiNode != null)
 		{
-			GD.Print(uiNode);
 			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
 			if(healthLabel == null) 
 			{	
@@ -74,12 +73,7 @@ public partial class Tower : Area2D
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
-		var testObject = GetParent().GetNode<CharacterBody2D>("CharacterBody2D");
-		GD.Print("Printing test object" + testObject);
-
 		EnableCollision();
-
-		GD.Print("Tower with health  :" + health);
 
 		InitializeHealthLabel();
 		UpdateHealthLabel();

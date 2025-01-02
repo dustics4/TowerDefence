@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://esd3m7hxfmb3"]
+[gd_scene load_steps=7 format=3 uid="uid://esd3m7hxfmb3"]
 
 [ext_resource type="Script" path="res://modules/Main.cs" id="1_5eo4c"]
 [ext_resource type="PackedScene" uid="uid://bbqas85avk7dv" path="res://Scenes/Tower.tscn" id="1_ejte1"]
-[ext_resource type="PackedScene" uid="uid://bcjkb0g86div" path="res://Scenes/test.tscn" id="2_q6u7g"]
 [ext_resource type="PackedScene" uid="uid://bn7t1jhr0ejac" path="res://Scenes/UI.tscn" id="3_mhe7j"]
 [ext_resource type="PackedScene" uid="uid://b14vwj6sxe6jy" path="res://Scenes/damage_zone.tscn" id="4_lp1mc"]
 [ext_resource type="PackedScene" uid="uid://d3g8exs0j2b5r" path="res://Scenes/Enemy.tscn" id="6_mkfqb"]
@@ -11,19 +10,13 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_5eo4c")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_q6u7g")]
-position = Vector2(20, 40)
-
 [node name="Tower" parent="." instance=ExtResource("1_ejte1")]
 position = Vector2(240, 320)
 
 [node name="Control" parent="." instance=ExtResource("3_mhe7j")]
 
 [node name="DamageZone" parent="." instance=ExtResource("4_lp1mc")]
-
-[node name="RigidBody2D" parent="." instance=ExtResource("6_mkfqb")]
 visible = false
-position = Vector2(200, 200)
 
 [node name="Enemy" parent="." instance=ExtResource("6_mkfqb")]
 

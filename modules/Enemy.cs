@@ -7,6 +7,8 @@ public partial class Enemy : RigidBody2D
 	public int MaxHealth;
 	public float Damage = 0f;
 	public RigidBody2D Body;
+	private Vector2 _targetPosition;
+
 
 	public Enemy(int _maxHealth)
 	{
@@ -21,7 +23,7 @@ public partial class Enemy : RigidBody2D
 		MaxHealth = _maxHealth;
 		CurrentHealth = MaxHealth; 
 		Damage = _damage;
-		Body = GetNode<RigidBody2D>(".");
+		Body = GetNode<RigidBody2D>(".");  
 	}
 
 	public void PrintEnemyHealth()
@@ -35,14 +37,22 @@ public partial class Enemy : RigidBody2D
 		// We need to enemy after spawning to move from coodrinates to tower global position.
 	}
 
+	public void Init()
+	{	
+	
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
+	{	
+		
 		PrintEnemyHealth();
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 	}
 }

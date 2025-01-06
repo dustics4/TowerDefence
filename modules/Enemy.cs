@@ -17,6 +17,7 @@ public partial class Enemy : RigidBody2D
 		this.MaxHealth = 100;
 		this.CurrentHealth = this.MaxHealth;
 		this.Damage = 10f;
+		this.Name = " ";
 	}
 
 	public void PrintEnemyHealth()
@@ -30,12 +31,13 @@ public partial class Enemy : RigidBody2D
 		// We need to enemy after spawning to move from coodrinates to tower global position.
 	}
 
-	public static Enemy NewEnemy(int _health, int _damage)
+	public static Enemy NewEnemy(int _health, float _damage, string _name)
 	{
 		var newEnemy = enemyScene.Instantiate<Enemy>();
 		newEnemy.MaxHealth = _health;
 		newEnemy.CurrentHealth = newEnemy.MaxHealth;
 		newEnemy.Damage = _damage;
+		newEnemy.Name = _name;
 		return newEnemy;
 	}
 

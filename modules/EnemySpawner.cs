@@ -15,7 +15,6 @@ public partial class EnemySpawner : Node
 
     private Node2D spawnPoint;
 
-    private PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
     public EnemySpawner()
     {
         
@@ -26,18 +25,20 @@ public partial class EnemySpawner : Node
                
     }
 
-    public void SpawnEnemy()
+    public void SpawnEnemy(int _health , float _damage, string _name)
     {
-        Enemy enemy = enemyScene.Instantiate() as Enemy;
-        enemy.Name = "Enemy" + Enemies.Count;
+        Enemy enemy = Enemy.NewEnemy(_health, _damage, _name);
+        
         Enemies.Add(enemy);
         AddChild(enemy);
-        enemy.Init(100, 10f);
+
         var rng = new RandomNumberGenerator();
-        var i = rng.RandiRange(0, 3);
+        var i = rng.RandiRange(0,3);
         var point = spawns[i];
         enemy.Position = point.Position;
-        GD.Print($"Enemy : {0} , @Spawned : {1}", enemy.Name, point.Name);
+
+        GD.Print($"Enemy : {enemy.Name} , Spawned : {point.Name}" );
+
     }
 
     public void CreateSpawnPoints()
@@ -61,11 +62,21 @@ public partial class EnemySpawner : Node
         }
     }
 
-    public void spawnEnemies(int _amount)
+    public void spawnEnemies(int _amount, string _name)
     {   
+        
         for(int i = 0; i < _amount; i++)
         {
-            SpawnEnemy();
+            string name = _name + i;
+            SpawnEnemy(100, 10f, name);
+        }
+    }
+
+    public void PrintEnemyValues()
+    {
+         foreach (Enemy enemy1 in Enemies)
+        {
+            GD.Print($"Enemy: HP {enemy1.MaxHealth} , DMG : {enemy1.Damage} , Name : {enemy1.Name}");
         }
     }
 
@@ -76,7 +87,11 @@ public partial class EnemySpawner : Node
         coords.Add(new Vector2(250,150));
         coords.Add(new Vector2(250,200));
         CreateSpawnPoints();
-        spawnEnemies(4);
+        //SpawnEnemy(100, 10f, "Name1");
+        //SpawnEnemy(200, 10f, "Destroyer");
+        spawnEnemies(4, "Destroyer");
+        PrintEnemyValues();
+       
         
     }
 

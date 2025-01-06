@@ -76,7 +76,7 @@ public partial class EnemySpawner : Node
         coords.Add(new Vector2(250,150));
         coords.Add(new Vector2(250,200));
         CreateSpawnPoints();
-        spawnEnemies(20);
+        spawnEnemies(4);
         
     }
 

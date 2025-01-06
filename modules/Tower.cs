@@ -24,7 +24,7 @@ public partial class Tower : Area2D
 	}
 	private void InitializeHealthLabel()
 	{
-		var uiNode = GetParent().GetNode<Control>("Control");
+		var uiNode = GetParent().GetNode<Control>("Control"); 
 		if(uiNode != null)
 		{
 			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");

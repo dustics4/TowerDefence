@@ -9,6 +9,7 @@ public partial class Enemy : RigidBody2D
 	public int MaxHealth;
 	public float Damage = 0f;
 	private Vector2 _targetPosition;
+    private static PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
 
 
 	public Enemy()
@@ -29,15 +30,13 @@ public partial class Enemy : RigidBody2D
 		// We need to enemy after spawning to move from coodrinates to tower global position.
 	}
 
-	public static void Enemy CreateEnemy()
+	public static Enemy NewEnemy(int _health, int _damage)
 	{
-
-	}
-	public void Init(int _maxHealth , float _damage)
-	{
-		MaxHealth = _maxHealth;
-		CurrentHealth = MaxHealth;
-		Damage = _damage;
+		var newEnemy = enemyScene.Instantiate<Enemy>();
+		newEnemy.MaxHealth = _health;
+		newEnemy.CurrentHealth = newEnemy.MaxHealth;
+		newEnemy.Damage = _damage;
+		return newEnemy;
 	}
 
 	public void SpawnPosition(Vector2 _vector)

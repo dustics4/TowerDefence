@@ -5,6 +5,7 @@ using System;
 
 public partial class Enemy : RigidBody2D
 {
+	public Area2D tower;
 	public int CurrentHealth;
 	public int MaxHealth;
 	public float Damage = 0f;
@@ -27,6 +28,8 @@ public partial class Enemy : RigidBody2D
 
 	public void Movement()
 	{
+		tower = GetParent().GetNode<Area2D>("Tower");
+		GD.Print($"{tower}");
 		//reference tower position.  _tower = GetParent().GetNode<Area2D>("Tower");
 		// We need to enemy after spawning to move from coodrinates to tower global position.
 	}

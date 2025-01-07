@@ -9,6 +9,8 @@ public partial class EnemySpawner : Node
     public List<Enemy> Enemies = new(); // creates an array of Enemy
     public List<Node2D> spawns = new();
     private List<Vector2> coords = new();
+
+    public Area2D tower;
     // colide with other enemies
     // movement enemy
     // what happens when enemy hits tower.
@@ -82,6 +84,8 @@ public partial class EnemySpawner : Node
 
     public override void _Ready()
     {
+     	
+
         coords.Add(new Vector2(200,100));
         coords.Add(new Vector2(300,100));
         coords.Add(new Vector2(250,150));
@@ -91,6 +95,7 @@ public partial class EnemySpawner : Node
         //SpawnEnemy(200, 10f, "Destroyer");
         spawnEnemies(4, "Destroyer");
         PrintEnemyValues();
+        
        
         
     }

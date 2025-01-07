@@ -92,8 +92,6 @@ public partial class EnemySpawner : Node
     {
      	tower = GetParent().GetNode<Area2D>("Tower");
         CreateSpawnPoints();
-        //SpawnEnemy(100, 10f, "Name1");
-        //SpawnEnemy(200, 10f, "Destroyer");
         spawnEnemies(4, "Destroyer");
         PrintEnemyValues();
         

@@ -35,6 +35,11 @@ public partial class Enemy : RigidBody2D
 			return;
 		}
 
+		if(reachedTower)
+		{
+			return;
+		}
+
 		 // Move towards the tower
         Vector2 direction = (tower.GlobalPosition - GlobalPosition).Normalized();
         float speed = 100f; // Adjust the movement speed as needed
@@ -43,7 +48,7 @@ public partial class Enemy : RigidBody2D
 		GD.Print($"Moving towards tower at {GlobalPosition}");
 
 		float distanceToTower = GlobalPosition.DistanceTo(tower.GlobalPosition);
-		if(distanceToTower <= 10f)
+		if(distanceToTower <= 10f )
 		{
 			reachedTower = true;
 			GD.Print($"{Name} has stopped moving at {GlobalPosition}");

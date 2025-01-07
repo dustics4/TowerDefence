@@ -47,6 +47,11 @@ public partial class EnemySpawner : Node
     public void CreateSpawnPoints()
     {
         string name = "Spawnpoint";
+        coords.Add(new Vector2(-50, 360)); // Left of the window
+        coords.Add(new Vector2(530, 360)); // Right of the window
+        coords.Add(new Vector2(240, -50)); // Above the window
+        coords.Add(new Vector2(240, 770)); // Below the window
+
         for(int i = 0; i < 4; i++)
         {
             spawnPoint = new();
@@ -86,11 +91,6 @@ public partial class EnemySpawner : Node
     public override void _Ready()
     {
      	tower = GetParent().GetNode<Area2D>("Tower");
-
-        coords.Add(new Vector2(200,100));
-        coords.Add(new Vector2(300,100));
-        coords.Add(new Vector2(250,150));
-        coords.Add(new Vector2(250,200));
         CreateSpawnPoints();
         //SpawnEnemy(100, 10f, "Name1");
         //SpawnEnemy(200, 10f, "Destroyer");

@@ -39,8 +39,9 @@ public partial class EnemySpawner : Node
         var point = spawns[i];
         enemy.Position = point.Position;
 
+        enemy.tower = tower;
         GD.Print($"Enemy : {enemy.Name} , Spawned : {point.Name}" );
-
+        
     }
 
     public void CreateSpawnPoints()
@@ -84,7 +85,7 @@ public partial class EnemySpawner : Node
 
     public override void _Ready()
     {
-     	
+     	tower = GetParent().GetNode<Area2D>("Tower");
 
         coords.Add(new Vector2(200,100));
         coords.Add(new Vector2(300,100));

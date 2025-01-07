@@ -11,6 +11,7 @@ public partial class Enemy : RigidBody2D
 	public float Damage = 0f;
 	private Vector2 _targetPosition;
     private static PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
+	private bool reachedTower = false;
 
 
 	public Enemy()
@@ -28,10 +29,25 @@ public partial class Enemy : RigidBody2D
 
 	public void Movement()
 	{
-		tower = GetParent().GetNode<Area2D>("Tower");
-		GD.Print($"{tower}");
-		//reference tower position.  _tower = GetParent().GetNode<Area2D>("Tower");
-		// We need to enemy after spawning to move from coodrinates to tower global position.
+		if (tower == null)
+		{
+			GD.PrintErr("Tower reference is null!");
+			return;
+		}
+
+		 // Move towards the tower
+        Vector2 direction = (tower.GlobalPosition - GlobalPosition).Normalized();
+        float speed = 100f; // Adjust the movement speed as needed
+        GlobalPosition += direction * speed * (float)GetProcessDeltaTime();
+
+		GD.Print($"Moving towards tower at {GlobalPosition}");
+
+		float distanceToTower = GlobalPosition.DistanceTo(tower.GlobalPosition);
+		if(distanceToTower <= 10f)
+		{
+			reachedTower = true;
+			GD.Print($"{Name} has stopped moving at {GlobalPosition}");
+		}
 	}
 
 	public static Enemy NewEnemy(int _health, float _damage, string _name)
@@ -58,6 +74,6 @@ public partial class Enemy : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		Movement();
 	}
 }

@@ -18,9 +18,7 @@ public partial class Tower : Area2D
 
 	public void _on_body_entered(Node2D body)
 	{
-		GD.Print($"Body entered: {body.Name}");
-		GD.Print("body");
-		ReduceHealth(10);
+		
 	}
 	private void InitializeHealthLabel()
 	{
@@ -52,17 +50,7 @@ public partial class Tower : Area2D
 
 	private void ReduceHealth(int amount)
 	{
-		health = health - amount;
-		GD.Print("reduce health function ran" + health);
-		UpdateHealthLabel();
-		GD.Print($"Tower health reduced to {health}");
-		if(health == 0)
-		{	
-			health = 0;
-			gameOver = true;
-			GD.Print("Game Over : " , gameOver);
-			
-		}
+		
 	}
 
 	public void Start(Vector2 position)
@@ -73,10 +61,7 @@ public partial class Tower : Area2D
 	
     public override void _Ready()  // Called when the node enters the scene tree for the first time.
 	{
-		EnableCollision();
-
-		InitializeHealthLabel();
-		UpdateHealthLabel();
+		
 	}
 
 	private void HandleCollisionEffects()

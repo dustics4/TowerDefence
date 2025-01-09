@@ -54,7 +54,6 @@ public partial class Enemy : RigidBody2D
         float speed = 100f; // Adjust the movement speed as needed
         GlobalPosition += direction * speed * (float)GetProcessDeltaTime();
 		DistanceToTower();
-		PrintEnemyHealth();
 	}
 
 	public void DistanceToTower()

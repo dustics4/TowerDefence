@@ -9,13 +9,20 @@ public partial class Tower : Area2D
 	[Signal]
 	public delegate void HitEventHandler();
 	 
-	[Export]
-	public CharacterBody2D test;
-	
-	private int health = 100;
+	[Export]	
+	public int CurrentHealth;
+	public int MaxHealth;
+	public float Damage = 0f;
+
 	private Label healthLabel;
 	public bool gameOver;
 
+	public Tower()
+	{
+		this.MaxHealth = 100;
+		this.CurrentHealth = this.MaxHealth;
+		this.Damage = 15;
+	}
 	public void _on_body_entered(Node2D body)
 	{
 		
@@ -41,10 +48,10 @@ public partial class Tower : Area2D
 	private void UpdateHealthLabel()
 	{
 		if(healthLabel != null){
-			healthLabel.Text = $"Health : {health}";
+			healthLabel.Text = $"Health : {CurrentHealth}";
 		} else
         {
-            GD.Print($"Health : {health} (Health label not found)");
+            GD.Print($"Health : {CurrentHealth} (Health label not found)");
         }
 	}
 

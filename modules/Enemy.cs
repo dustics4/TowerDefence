@@ -46,7 +46,11 @@ public partial class Enemy : RigidBody2D
         GlobalPosition += direction * speed * (float)GetProcessDeltaTime();
 
 		GD.Print($"Moving towards tower at {GlobalPosition}");
+		DistanceToTower();
+	}
 
+	public void DistanceToTower()
+	{
 		float distanceToTower = GlobalPosition.DistanceTo(tower.GlobalPosition);
 		if(distanceToTower <= 10f )
 		{

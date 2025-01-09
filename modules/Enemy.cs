@@ -6,9 +6,7 @@ using System;
 public partial class Enemy : RigidBody2D
 {
 	public Area2D tower;
-	public int CurrentHealth;
-	public int MaxHealth;
-	public float Damage = 0f;
+	private Health health;
 	private Vector2 _targetPosition;
     private static PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
 	private bool reachedTower = false;
@@ -16,17 +14,28 @@ public partial class Enemy : RigidBody2D
 
 	public Enemy()
 	{
-		this.MaxHealth = 100;
-		this.CurrentHealth = this.MaxHealth;
-		this.Damage = 10f;
-		this.Name = " ";
+		health = new Health();
+		health.MaxHealth = 100;
+		health.MaxHealth = health.CurrentHealth;
+		health.Damage = 10f;
+		GD.Print("Health initalized with MaxHealth : ", health.MaxHealth);
 	}
 
 	public void PrintEnemyHealth()
 	{	
-		GD.Print($"Current health : {0} ", CurrentHealth);
+		GD.Print($"Current health : {health.CurrentHealth} ");
 	}
 
+	public void PrintEnemyDamage()
+	{	
+		GD.Print($"Current Damage : {health.Damage} ");
+	}
+
+	public void PrintEnemyName()
+	{	
+		GD.Print($"Current Name : {health.Name} ");
+	}
+	
 	public void Movement()
 	{
 		if (tower == null)
@@ -44,9 +53,8 @@ public partial class Enemy : RigidBody2D
         Vector2 direction = (tower.GlobalPosition - GlobalPosition).Normalized();
         float speed = 100f; // Adjust the movement speed as needed
         GlobalPosition += direction * speed * (float)GetProcessDeltaTime();
-
-		GD.Print($"Moving towards tower at {GlobalPosition}");
 		DistanceToTower();
+		PrintEnemyHealth();
 	}
 
 	public void DistanceToTower()
@@ -62,9 +70,9 @@ public partial class Enemy : RigidBody2D
 	public static Enemy NewEnemy(int _health, float _damage, string _name)
 	{
 		var newEnemy = enemyScene.Instantiate<Enemy>();
-		newEnemy.MaxHealth = _health;
-		newEnemy.CurrentHealth = newEnemy.MaxHealth;
-		newEnemy.Damage = _damage;
+		newEnemy.health.MaxHealth = _health;
+		newEnemy.health.CurrentHealth = newEnemy.health.MaxHealth;
+		newEnemy.health.Damage = _damage;
 		newEnemy.Name = _name;
 		return newEnemy;
 	}

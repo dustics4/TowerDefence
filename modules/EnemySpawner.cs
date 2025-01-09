@@ -41,7 +41,6 @@ public partial class EnemySpawner : Node
 
         enemy.tower = tower;
         GD.Print($"Enemy : {enemy.Name} , Spawned : {point.Name}" );
-        
     }
 
     public void CreateSpawnPoints()
@@ -84,7 +83,9 @@ public partial class EnemySpawner : Node
     {
          foreach (Enemy enemy1 in Enemies)
         {
-            GD.Print($"Enemy: HP {enemy1.MaxHealth} , DMG : {enemy1.Damage} , Name : {enemy1.Name}");
+            enemy1.PrintEnemyDamage();
+            enemy1.PrintEnemyHealth();
+            GD.Print($"Enemy: Name : {enemy1.Name}");
         }
     }
 

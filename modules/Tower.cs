@@ -30,30 +30,11 @@ public partial class Tower : Area2D
 	private void InitializeHealthLabel()
 	{
 		var uiNode = GetParent().GetNode<Control>("Control"); 
-		if(uiNode != null)
-		{
-			healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
-			if(healthLabel == null) 
-			{	
-				GD.Print(healthLabel);
-				GD.Print("Health label not found under  CanvasLayer/Label.");
-			}
-		}else
-		{
-			GD.PrintErr("UI node not found");
-			GD.Print(uiNode);
-		}
+		healthLabel = uiNode.GetNode<Label>("CanvasLayer/Label");
+	
 	}
 
-	private void UpdateHealthLabel()
-	{
-		if(healthLabel != null){
-			healthLabel.Text = $"Health : {CurrentHealth}";
-		} else
-        {
-            GD.Print($"Health : {CurrentHealth} (Health label not found)");
-        }
-	}
+	
 
 	private void ReduceHealth(int amount)
 	{

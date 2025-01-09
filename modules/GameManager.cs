@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Main : Node
+public partial class GameManager : Node
 {	
 	private EnemySpawner _enemySpawner = new EnemySpawner();
 	//private Enemy _enemy = new Enemy(100);

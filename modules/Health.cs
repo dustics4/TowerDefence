@@ -17,8 +17,10 @@ public partial class Health : Node
         this.Damage = 10f;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int amount)
     {
+        CurrentHealth -= amount;
+
         EmitSignal(nameof(HealthChanged));
 
         if(CurrentHealth <= 0)

@@ -21,14 +21,12 @@ public partial class Health : Node
     {
         CurrentHealth -= amount;
 
-        EmitSignal(nameof(HealthChanged));
+        EmitSignal(nameof(HealthChanged)); // This should trigger when the health changes
 
-        if(CurrentHealth <= 0)
+        if(CurrentHealth <= 0) // This triggers when health is 0 or below
         {
             EmitSignal(nameof(OnDeath));
         }
     }
-
-    
     
 }

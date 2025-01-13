@@ -80,16 +80,16 @@ public partial class Enemy : RigidBody2D
 	{
 		GlobalPosition = _vector;
 	}
-
+	
 	public void OnEnemyDeath()
 	{
-		
+		GD.Print($"{this.Name} has died.");
+		QueueFree(); // Remove enemy from the scene.
 	}
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{	
-		
+		health.Connect(nameof(Health.OnDeath), new Callable(this, nameof(OnEnemyDeath)));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

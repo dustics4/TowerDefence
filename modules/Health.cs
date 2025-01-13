@@ -3,6 +3,10 @@ using System;
 
 public partial class Health : Node
 {
+    [Signal]
+    public delegate void HealthChangedEventHandler();
+    [Signal]
+    public delegate void OnDeathEventHandler();
     public int CurrentHealth;
     public int MaxHealth;
     public float Damage;
@@ -15,6 +19,14 @@ public partial class Health : Node
 
     public void TakeDamage()
     {
+        EmitSignal(nameof(HealthChanged));
 
+        if(CurrentHealth <= 0)
+        {
+            EmitSignal(nameof(OnDeath));
+        }
     }
+
+    
+    
 }

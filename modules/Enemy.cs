@@ -11,7 +11,7 @@ public partial class Enemy : RigidBody2D
     private static PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Enemy.tscn");
 	private bool reachedTower = false;
 
-
+	
 	public Enemy()
 	{
 		health = new Health();
@@ -79,6 +79,11 @@ public partial class Enemy : RigidBody2D
 	public void SpawnPosition(Vector2 _vector)
 	{
 		GlobalPosition = _vector;
+	}
+
+	public void OnEnemyDeath()
+	{
+		
 	}
 
 	// Called when the node enters the scene tree for the first time.
